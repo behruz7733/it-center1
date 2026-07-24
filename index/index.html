@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Путешествие</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#00b4db,#0066cc);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:30px;
+width:430px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,.3);
+animation:show 1s;
+}
+
+h2{
+margin-bottom:20px;
+color:#0066cc;
+}
+
+p{
+margin:15px 0;
+font-size:18px;
+}
+
+button{
+padding:12px 20px;
+margin:8px;
+border:none;
+border-radius:10px;
+background:#0066cc;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#0099ff;
+transform:scale(1.05);
+}
+
+input{
+padding:10px;
+width:80%;
+font-size:18px;
+border-radius:10px;
+border:2px solid #0066cc;
+text-align:center;
+}
+
+.creator{
+font-size:24px;
+color:#0066cc;
+font-weight:bold;
+animation:creator 3s;
+}
+
+@keyframes show{
+from{
+opacity:0;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes creator{
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<div id="content">
+
+<h2>Ассаламу алейкум 🤲</h2>
+
+<p><b>Выберите город</b></p>
+
+<button onclick="city('🇺🇸 Америка')">🇺🇸 Америка</button>
+
+<button onclick="city('🇦🇪 Дубай')">🇦🇪 Дубай</button>
+
+<button onclick="city('🕋 Мекка')">🕋 Мекка</button>
+
+</div>
+
+</div>
+
+<script>
+
+function city(place){
+
+document.getElementById("content").innerHTML=`
+
+<h2>${place}</h2>
+
+<p><b>С кем хотите полететь?</b></p>
+
+<button onclick="travel('Сам')">👤 Сам</button>
+
+<button onclick="travel('С мужем / женой')">❤️ С мужем / женой</button>
+
+<button onclick="travel('С семьёй')">👨‍👩‍👧‍👦 С семьёй</button>
+
+`;
+
+}
+
+function travel(person){
+
+document.getElementById("content").innerHTML=`
+
+<h2>${person}</h2>
+
+<p style="font-size:20px;">
+🤲 Делайте дуа своему сыну.<br>
+ИншаАллах, у него всё получится.
+</p>
+
+<br>
+
+<p><b>Оставьте нам звёзды (1-10)</b></p>
+
+<input type="number" id="star" min="1" max="10" placeholder="1-10">
+
+<br><br>
+
+<button onclick="finish()">Отправить</button>
+
+`;
+
+}
+
+function finish(){
+
+let star=document.getElementById("star").value;
+
+if(star==""){
+
+alert("Поставьте оценку!");
+
+return;
+
+}
+
+document.getElementById("content").innerHTML=`
+
+<h2>Спасибо! ⭐ ${star}/10</h2>
+
+<p><b>Хотите узнать, кто создал нас?</b></p>
+
+<button onclick="creator()">Да</button>
+
+<button onclick="noCreator()">Нет</button>
+
+`;
+
+}
+
+function creator(){
+
+document.getElementById("content").innerHTML=`
+
+<div class="creator">
+
+✨ Нас создал Behruz ✨
+
+<br><br>
+
+<p>
+
+Он занимался созданием этого сайта около <b>5 часов</b>.
+
+<br><br>
+
+Спасибо за посещение ❤️
+
+</p>
+
+</div>
+
+`;
+
+}
+
+function noCreator(){
+
+document.getElementById("content").innerHTML=`
+
+<h2>Спасибо за посещение ❤️</h2>
+
+<p>Пусть Аллах облегчит ваши дела. Амин.</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
